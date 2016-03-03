@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @lottery.name %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @lottery.state %>
+</p>
+
+<p>
+  <strong>Winning number:</strong>
+  <%= @lottery.winning_number %>
+</p>
+
+<p>
+  <strong>Start date:</strong>
+  <%= @lottery.start_date %>
+</p>
+
+<p>
+  <strong>End date:</strong>
+  <%= @lottery.end_date %>
+</p>
+
+<h2>
+  Entries 
+  <span class='text-muted'>
+    (<%= "Showing #{@lottery.winning_entries.size + 10}/#{@lottery.entries.size}" %>)
+  </span>
+</h2>
+
+<table class='table table-bordered table-striped'>
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Numbers</th>
+      <th>Played On</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lottery.winning_entries.each do |entry| %>
+      <tr class='success'>
+        <td><%= entry.id %></td>
+        <td><%= entry.numbers %></td>
+        <td><%= entry.created_at %></td>
+      </tr>
+    <% end %>
+    <% @lottery.entries.sample(10).each do |entry| %>
+      <tr>
+        <td><%= entry.id %></td>
+        <td><%= entry.numbers %></td>
+        <td><%= entry.created_at %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

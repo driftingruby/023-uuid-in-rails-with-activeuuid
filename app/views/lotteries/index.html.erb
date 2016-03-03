@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Lotteries</h1>
+
+<table class='table table-bordered table-striped'>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>State</th>
+      <th>Winning number</th>
+      <th>Start date</th>
+      <th>End date</th>
+      <th>Entries</th>
+      <th>Winning Entries</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @lotteries.each do |lottery| %>
+      <tr>
+        <td><%= lottery.name %></td>
+        <td><%= lottery.state %></td>
+        <td><%= lottery.winning_number %></td>
+        <td><%= lottery.start_date %></td>
+        <td><%= lottery.end_date %></td>
+        <td><%= lottery.entries.size %></td>
+        <td><%= lottery.winning_entries.size %></td>
+        <td><%= link_to 'Show', lottery %></td>
+        <td><%= link_to 'Edit', edit_lottery_path(lottery) %></td>
+        <td><%= link_to 'Destroy', lottery, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Lottery', new_lottery_path %>

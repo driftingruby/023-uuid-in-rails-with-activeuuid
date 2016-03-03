@@ -1,3 +1,4 @@
 Rails.application.routes.draw do
-  root to: 'visitors#index'
+  resources :lotteries
+  root to: 'lotteries#index'
 end
